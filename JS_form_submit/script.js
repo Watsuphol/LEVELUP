@@ -83,4 +83,3 @@ function isImgUrl(imageURL) {
   return /\.(jpg|jpeg)$/.test(input.pathname);
 }
 
-test
