@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Submit and Validation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-400 p-6">
+    <!-- +++form+++ -->
+    <form
+      id="form"
+      class="bg-white font-semibold text-xl mt-12 p-6 rounded-lg shadow-md max-w-md mx-auto"
+    >
+      <!-- Image URL -->
+      <div class="mb-4">
+        <label for="imageFile" class="block text-gray-700 font-bold mb-2"
+          >Image URL:</label
+        >
+        <input
+          type="url"
+          name="imageURL"
+          id="imageURL"
+          required
+          class="w-full px-3 py-2 border border-gray-300 rounded-md"
+        />
+      </div>
+
+      <!-- Image Caption -->
+      <div class="mb-4">
+        <label for="imageCaption" class="block text-gray-700 font-bold mb-2"
+          >Image Caption:</label
+        >
+        <input
+          type="text"
+          name="imageCaption"
+          id="imageCaption"
+          required
+          minlength="3"
+          maxlength="255"
+          class="w-full px-3 py-2 border border-gray-300 rounded-md"
+        />
+      </div>
+
+      <!-- error message -->
+      <p id="errorMessage" class="text-red-500 mb-4"></p>
+
+      <!-- btn -->
+      <div class="flex justify-center space-x-12 mt-8">
+        <button
+          type="submit"
+          class="bg-blue-500 text-white px-8 py-2 rounded-md hover:bg-blue-600 hover:ring hover:ring-blue-300"
+        >
+          Submit
+        </button>
+        <button
+          type="reset"
+          class="bg-white text-red-600 px-8 py-2 rounded-md ring ring-inset ring-red-500 hover:bg-red-600 hover:text-white hover:ring hover:ring-red-3--"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+
+    <!-- +++total like+++ -->
+    <div
+      id="likeCounter"
+      class="text-white font-bold mt-4 py-2 text-center text-3xl bg-blue-600"
+    >
+      Total Likes: 0
+    </div>
+
+    <!-- +++displaySection+++ -->
+    <section
+      id="displaySection"
+      class="mt-6 max-w-md mx-auto space-y-4"
+    ></section>
+
+    <script src="../JS_form_submit/script.js"></script>
+  </body>
+</html>
