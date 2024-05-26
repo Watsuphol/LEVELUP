@@ -1,4 +1,5 @@
 let products = [];
+let cart = [];
 let id = 0;
 
 document.getElementById("form").addEventListener("submit", function (event) {
@@ -75,6 +76,7 @@ function toggleSelector(event) {
 
 document.getElementById("addbtn").addEventListener("click", () => {
   cart = products.filter((product) => product.checked);
+  console.log(cart);
   displayCart(cart);
 });
 
@@ -87,7 +89,7 @@ function displayCart(cart) {
     div.className = "items-center bg-white p-4 rounded-lg shadow-lg";
 
     div.innerHTML = `
-    <input type="checkbox" class="sr-only w-5 h-5 text-2xl accent-rose-600" data-id="${product.id}" onchange="calculateSelector(event)">
+    <input type="checkbox" class=" w-5 h-5 text-2xl accent-rose-600" data-id="${product.id}" onchange="calculateSelector(event)">
     <img src="${product.imgUrl}" alt="${product.productName} class="w-full aspect-[4/3] rounded-md mb-4 object-cover">
     
     <div class="flex items-center justify-between">
@@ -115,12 +117,15 @@ function displayCart(cart) {
 }
 
 function removeCard(productId) {
-  cart = cart.filter((product) => product.id !== productId);
-  displayCart(cart);
+  products = products.filter((product) => product.id !== productId);
+
+  displayCart(products);
 }
 
+//calulate Btn
 function calculateSelector(event) {
   const checkbox = event.target;
+  console.log(event);
   const checkboxId = parseInt(checkbox.getAttribute("data-id"));
   const product = products.find((product) => product.id === checkboxId);
 
@@ -131,9 +136,8 @@ function calculateSelector(event) {
   }
 }
 
-//calulate Btn
 function calulateBtn() {
-  // cart = products.filter((product) => product.checked && product.id !== -1);
+  cart = products.filter((product) => product.checked && product.id !== -1);
   calculateFinal(cart);
 }
 

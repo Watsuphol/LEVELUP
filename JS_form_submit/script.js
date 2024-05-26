@@ -59,6 +59,9 @@ function displayUpload(upload) {
   updateLikeCounter();
 }
 
+/*###################### QUS ######################
+#####################################################*/
+
 function toggleLike(event) {
   const checkbox = event.target;
   const uploadId = parseInt(checkbox.getAttribute("data-id"));
