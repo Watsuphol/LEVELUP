@@ -1,10 +1,11 @@
 import Transaction from "./component/Transaction";
 
-const Title = () => <h1>แอพบัญชีรายรับ - รายจ่าย</h1>;
 function App() {
   return (
     <div>
-      <Title />
+      <h1 style={{ color: "red", textAlign: "center" }}>
+        แอพบัญชีรายรับ - รายจ่าย
+      </h1>
       <Transaction />
     </div>
   );
