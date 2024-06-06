@@ -16,18 +16,24 @@
 //   paper *= number;
 // }
 
-let input = 39;
-let str = String(input);
-let splitStr = str.split("");
-let paper = 1;
-while (splitStr.length == 1) {
-  for (const num of splitStr) {
-    let number = Number(num);
-    paper *= number;
-    console.log(paper);
-    splitStr.length --;
-    break;
-  }
+function sunDigit(num) {
+    let strNum = String(num) // "39"
+    let strNumArr = strNum.split("") // ["3","9"]
+    let len = strNumArr.length
+
+    while (len > 1) {
+        let mul = 1;
+        for (let n of strNumArr) {
+            mul *= n; // 1 * 3 * 9 = 27
+        }
+        strNum = String(mul); // "27"
+        strNumArr = strNum.split("") // ["2","7"]
+        len = strNumArr.length // 2, 2 , 1
+    }
+    return strNumArr[0]
 }
-console.log(paper);
-// บรรทัดไหนที่ทำให้ splitStr ออกจาก loop
+
+console.log(sunDigit(39));
+console.log(sunDigit(999));
+
+
