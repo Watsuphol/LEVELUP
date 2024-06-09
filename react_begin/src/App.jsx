@@ -1,27 +1,27 @@
-const Title = () => <h1>โปรแกรมบัญชีรายรับ - รายจ่าย</h1>;
-const Description = () => <p>บันทึกข้อมูลบัญชีในเเต่ละวัน</p>;
-const Transaction = () => {
-  return (
-    <ul>
-      <li>
-        ค่าเดินทาง <span>-200</span>
-      </li>
-      <li>
-        เงินเดือน <span>+20,000</span>
-      </li>
-      <li>
-        เงินอาหาร <span>-500</span>
-      </li>
-    </ul>
-  );
-};
+import Transaction from "./components/Transaction";
+import "./App.css";
+import FormComponent from "./components/FormComponent";
+import { useState } from "react";
+
 function App() {
+  //useState
+  const [items, setItems] = useState([]);
+
+  // onAddItem
+  const onAddNewItem = (newItem) => {
+    setItems((prevItem) => {
+      return [newItem, ...prevItem];
+    });
+  };
+
   return (
-    <>
-      <Title />
-      <Description />
-      <Transaction />
-    </>
+    <div className="container">
+      <h1 style={{ color: "red", textAlign: "center", fontSize: "1.5rem" }}>
+        แอพบัญชีรายรับ - รายจ่าย
+      </h1>
+      <FormComponent onAddItem={onAddNewItem} />
+      <Transaction items={items} />
+    </div>
   );
 }
 
