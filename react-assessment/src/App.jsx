@@ -1,25 +1,94 @@
 import AdminHomeSector from "./components/AdminHomeSector";
+import InputSector from "./components/InputSector";
+import UserHomeSector from "./components/UserHomeSector";
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import TableUser from "./components/TableUser";
+import NavBar from "./components/NavBar";
+import Home from "./components/Home";
+import Owner from "./components/Owner";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
-  return (
-    <div>
-      <div className="text-center py-5">
-        <h1 className="text-4xl font-bold pb-5">Generation Thailand</h1>
-        <h1 className="text-4xl font-bold">React - Assessment</h1>
-      </div>
-      <div className="flex gap-5 justify-around mt-10">
-        <button className="bg-gray-500 text-white px-8 py-2 rounded-md hover:bg-gray-600 hover:ring hover:ring-gray-300">
-          User Home Sector
-        </button>
-        <button className="bg-gray-500 text-white px-8 py-2 rounded-md hover:bg-gray-600 hover:ring hover:ring-gray-300">
-          Admin Home Sector
-        </button>
-      </div>
-      <div>
-        <AdminHomeSector />
-      </div>
-    </div>
-  );
+  const [items, setItems] = useState([]);
+  const [Name, setName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [Position, setPosition] = useState("");
+
+  const inputName = (event) => setName(event.target.value);
+  const inputLastName = (event) => setLastName(event.target.value);
+  const inputPosition = (event) => setPosition(event.target.value);
+
+  const saveData = (event) => {
+    event.preventDefault();
+    const itemData = {
+      id: uuidv4(),
+      name: Name,
+      lastName: LastName,
+      position: Position,
+    };
+    setItems((prevItems) => [...prevItems, itemData]);
+    setName("");
+    setLastName("");
+    setPosition("");
+  };
+
+  const deleteItem = (id) => {
+    setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <div>
+          <NavBar />
+          <Home />
+        </div>
+      ),
+    },
+    {
+      path: "/User",
+      element: (
+        <div>
+          <NavBar />
+          <UserHomeSector />
+          <TableUser items={items} />
+        </div>
+      ),
+    },
+    {
+      path: "/Admin",
+      element: (
+        <div>
+          <NavBar />
+          <AdminHomeSector />
+          <InputSector
+            inputName={inputName}
+            inputLastName={inputLastName}
+            inputPosition={inputPosition}
+            saveData={saveData}
+            items={items}
+            Name={Name}
+            LastName={LastName}
+            Position={Position}
+            deleteItem={deleteItem}
+          />
+        </div>
+      ),
+    },
+    {
+      path: "/Owner",
+      element: (
+        <div>
+          <NavBar />
+          <Owner />
+        </div>
+      ),
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
