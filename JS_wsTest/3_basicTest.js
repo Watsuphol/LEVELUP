@@ -1,6 +1,9 @@
 // หาผลรวมสุดท้ายของตัวเลขที่รับมา
 // 39 --> (because 3*9=27, 2*7=14, 1*4=4)
 
+const number = `${39}`
+// การประกาศตัวแปร if else loop
+
 function sunDigit(num) {
   let strNum = String(num); // "39"
   let strNumArr = strNum.split(""); // ["3","9"]
