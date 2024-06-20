@@ -22,4 +22,4 @@ function textNumber(str) {
   return newStr;
 }
 
-console.log(textNumber("big"));
+console.log(textNumber("abcd"));
