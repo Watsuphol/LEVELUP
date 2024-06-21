@@ -8,7 +8,6 @@
 function textNumber(str) {
   let len = str.length;
   let newStr = "";
-
   for (let i = 0; i < len; i++) {
     console.log(i);
     if (i !== 0) {
