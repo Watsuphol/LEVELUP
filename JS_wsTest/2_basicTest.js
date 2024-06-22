@@ -2,7 +2,7 @@
 // loop array เพื่อได้ ตำเเหน่ง
 // math pow เลขยกกำลัง
 
-let input = 321;
+let input = 15;
 let splitInt = input.toString().split("");
 console.log(splitInt);
 
