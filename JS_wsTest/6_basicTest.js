@@ -1,4 +1,4 @@
-let arr1 = [1, 2, 3];
+let arr1 = [1, 2, 4];
 let arr2 = [100,2,1,10]
 
 let uniqueArr1 = []
